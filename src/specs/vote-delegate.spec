@@ -1,7 +1,7 @@
 
 // vote-delegate.spec
 
-// certoraRun src/VoteDelegate.sol src/DSChief.sol src/Gov.sol src/Iou.sol --link VoteDelegate:chief=DSChief VoteDelegate:gov=Gov VoteDelegate:iou=Iou DSChief:GOV=Gov DSChief:IOU=Iou --verify VoteDelegate:src/specs/vote-delegate.spec --loop_iter 3
+// certoraRun src/VoteDelegate.sol src/DSChief.sol src/Gov.sol src/Iou.sol --link VoteDelegate:chief=DSChief VoteDelegate:gov=Gov VoteDelegate:iou=Iou DSChief:GOV=Gov DSChief:IOU=Iou --verify VoteDelegate:src/specs/vote-delegate.spec
 
 using DSChief as chiefInstance
 using Gov as govInstance
@@ -10,7 +10,10 @@ using Iou as iouInstance
 rule lock(uint256 wad) {
     env e;
 
-    // require(e.msg.sender != chiefInstance);
+    require(e.msg.sender != currentContract);
+    require(e.msg.sender != chiefInstance);
+    require(e.msg.sender != govInstance);
+    require(e.msg.sender != iouInstance);
 
     uint256 senderStakeBefore = stake(e, e.msg.sender);
     uint256 chiefDepositsBefore = chiefInstance.deposits(e, currentContract);
