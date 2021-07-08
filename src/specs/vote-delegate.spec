@@ -1,11 +1,7 @@
 
 // vote-delegate.spec
 
-// certoraRun src/VoteDelegate.sol src/DSChief.sol src/Gov.sol src/Iou.sol --link VoteDelegate:chief=DSChief VoteDelegate:gov=Gov VoteDelegate:iou=Iou DSChief:GOV=Gov DSChief:IOU=Iou --verify VoteDelegate:src/specs/vote-delegate.spec --loop_iter 4
-
-// certoraRun src/VoteDelegate.sol src/DSChief.sol --link VoteDelegate:chief=DSChief --verify VoteDelegate:src/specs/vote-delegate.spec --loop_iter 2
-
-// certoraRun src/VoteDelegate.sol src/DSChief.sol src/Gov.sol --link VoteDelegate:chief=DSChief VoteDelegate:gov=Gov DSChief:GOV=Gov --verify VoteDelegate:src/specs/vote-delegate.spec --loop_iter 3
+// certoraRun src/VoteDelegate.sol src/DSChief.sol src/Gov.sol src/Iou.sol --link VoteDelegate:chief=DSChief VoteDelegate:gov=Gov VoteDelegate:iou=Iou DSChief:GOV=Gov DSChief:IOU=Iou --verify VoteDelegate:src/specs/vote-delegate.spec --loop_iter 4 --optimistic_loop
 
 using DSChief as chiefInstance
 using Gov as govInstance
