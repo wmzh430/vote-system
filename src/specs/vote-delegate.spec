@@ -142,17 +142,17 @@ rule vote_slate(bytes32 newSlate) {
 
     assert(chiefInstance.votes(currentContract) == newSlate, "chief vote slate error");
 
-    assert(oldAddr1 != 0 => approvalsAfterOldAddr1 == approvalsBeforeOldAddr1 - weight || approvalsAfterOldAddr1 == approvalsBeforeOldAddr1);
-    assert(oldAddr2 != 0 => approvalsAfterOldAddr2 == approvalsBeforeOldAddr2 - weight || approvalsAfterOldAddr2 == approvalsBeforeOldAddr2);
-    assert(oldAddr3 != 0 => approvalsAfterOldAddr3 == approvalsBeforeOldAddr3 - weight || approvalsAfterOldAddr3 == approvalsBeforeOldAddr3);
-    assert(oldAddr4 != 0 => approvalsAfterOldAddr4 == approvalsBeforeOldAddr4 - weight || approvalsAfterOldAddr4 == approvalsBeforeOldAddr4);
-    assert(oldAddr5 != 0 => approvalsAfterOldAddr5 == approvalsBeforeOldAddr5 - weight || approvalsAfterOldAddr5 == approvalsBeforeOldAddr5);
+    assert(oldAddr1 != 0 => approvalsAfterOldAddr1 == approvalsBeforeOldAddr1 - weight || approvalsAfterOldAddr1 == approvalsBeforeOldAddr1, "error balance old addr 1");
+    assert(oldAddr2 != 0 => approvalsAfterOldAddr2 == approvalsBeforeOldAddr2 - weight || approvalsAfterOldAddr2 == approvalsBeforeOldAddr2, "error balance old addr 2");
+    assert(oldAddr3 != 0 => approvalsAfterOldAddr3 == approvalsBeforeOldAddr3 - weight || approvalsAfterOldAddr3 == approvalsBeforeOldAddr3, "error balance old addr 3");
+    assert(oldAddr4 != 0 => approvalsAfterOldAddr4 == approvalsBeforeOldAddr4 - weight || approvalsAfterOldAddr4 == approvalsBeforeOldAddr4, "error balance old addr 4");
+    assert(oldAddr5 != 0 => approvalsAfterOldAddr5 == approvalsBeforeOldAddr5 - weight || approvalsAfterOldAddr5 == approvalsBeforeOldAddr5, "error balance old addr 5");
 
-    assert(newAddr1 != 0 => approvalsAfterNewAddr1 == approvalsBeforeNewAddr1 + weight || approvalsAfterNewAddr1 == approvalsBeforeNewAddr1);
-    assert(newAddr2 != 0 => approvalsAfterNewAddr2 == approvalsBeforeNewAddr2 + weight || approvalsAfterNewAddr2 == approvalsBeforeNewAddr2);
-    assert(newAddr3 != 0 => approvalsAfterNewAddr3 == approvalsBeforeNewAddr3 + weight || approvalsAfterNewAddr3 == approvalsBeforeNewAddr3);
-    assert(newAddr4 != 0 => approvalsAfterNewAddr4 == approvalsBeforeNewAddr4 + weight || approvalsAfterNewAddr4 == approvalsBeforeNewAddr4);
-    assert(newAddr5 != 0 => approvalsAfterNewAddr5 == approvalsBeforeNewAddr5 + weight || approvalsAfterNewAddr5 == approvalsBeforeNewAddr5);
+    assert(newAddr1 != 0 => approvalsAfterNewAddr1 == approvalsBeforeNewAddr1 + weight || approvalsAfterNewAddr1 == approvalsBeforeNewAddr1, "error balance new addr 1");
+    assert(newAddr2 != 0 => approvalsAfterNewAddr2 == approvalsBeforeNewAddr2 + weight || approvalsAfterNewAddr2 == approvalsBeforeNewAddr2, "error balance new addr 2");
+    assert(newAddr3 != 0 => approvalsAfterNewAddr3 == approvalsBeforeNewAddr3 + weight || approvalsAfterNewAddr3 == approvalsBeforeNewAddr3, "error balance new addr 3");
+    assert(newAddr4 != 0 => approvalsAfterNewAddr4 == approvalsBeforeNewAddr4 + weight || approvalsAfterNewAddr4 == approvalsBeforeNewAddr4, "error balance new addr 4");
+    assert(newAddr5 != 0 => approvalsAfterNewAddr5 == approvalsBeforeNewAddr5 + weight || approvalsAfterNewAddr5 == approvalsBeforeNewAddr5, "error balance new addr 5");
 }
 
 rule vote_addrs(address[] nYays) {
@@ -210,15 +210,15 @@ rule vote_addrs(address[] nYays) {
 
     assert(chiefInstance.votes(currentContract) == chiefInstance.etch(e, nYays), "chief vote slate error");
 
-    assert(oldAddr1 != 0 => approvalsAfterOldAddr1 == approvalsBeforeOldAddr1 - weight || approvalsAfterOldAddr1 == approvalsBeforeOldAddr1);
-    assert(oldAddr2 != 0 => approvalsAfterOldAddr2 == approvalsBeforeOldAddr2 - weight || approvalsAfterOldAddr2 == approvalsBeforeOldAddr2);
-    assert(oldAddr3 != 0 => approvalsAfterOldAddr3 == approvalsBeforeOldAddr3 - weight || approvalsAfterOldAddr3 == approvalsBeforeOldAddr3);
-    assert(oldAddr4 != 0 => approvalsAfterOldAddr4 == approvalsBeforeOldAddr4 - weight || approvalsAfterOldAddr4 == approvalsBeforeOldAddr4);
-    assert(oldAddr5 != 0 => approvalsAfterOldAddr5 == approvalsBeforeOldAddr5 - weight || approvalsAfterOldAddr5 == approvalsBeforeOldAddr5);
+    assert(oldAddr1 != 0 => approvalsAfterOldAddr1 == approvalsBeforeOldAddr1 - weight || approvalsAfterOldAddr1 == approvalsBeforeOldAddr1, "error balance old addr 1");
+    assert(oldAddr2 != 0 => approvalsAfterOldAddr2 == approvalsBeforeOldAddr2 - weight || approvalsAfterOldAddr2 == approvalsBeforeOldAddr2, "error balance old addr 2");
+    assert(oldAddr3 != 0 => approvalsAfterOldAddr3 == approvalsBeforeOldAddr3 - weight || approvalsAfterOldAddr3 == approvalsBeforeOldAddr3, "error balance old addr 3");
+    assert(oldAddr4 != 0 => approvalsAfterOldAddr4 == approvalsBeforeOldAddr4 - weight || approvalsAfterOldAddr4 == approvalsBeforeOldAddr4, "error balance old addr 4");
+    assert(oldAddr5 != 0 => approvalsAfterOldAddr5 == approvalsBeforeOldAddr5 - weight || approvalsAfterOldAddr5 == approvalsBeforeOldAddr5, "error balance old addr 5");
 
-    assert(newAddr1 != 0 => approvalsAfterNewAddr1 == approvalsBeforeNewAddr1 + weight || approvalsAfterNewAddr1 == approvalsBeforeNewAddr1);
-    assert(newAddr2 != 0 => approvalsAfterNewAddr2 == approvalsBeforeNewAddr2 + weight || approvalsAfterNewAddr2 == approvalsBeforeNewAddr2);
-    assert(newAddr3 != 0 => approvalsAfterNewAddr3 == approvalsBeforeNewAddr3 + weight || approvalsAfterNewAddr3 == approvalsBeforeNewAddr3);
-    assert(newAddr4 != 0 => approvalsAfterNewAddr4 == approvalsBeforeNewAddr4 + weight || approvalsAfterNewAddr4 == approvalsBeforeNewAddr4);
-    assert(newAddr5 != 0 => approvalsAfterNewAddr5 == approvalsBeforeNewAddr5 + weight || approvalsAfterNewAddr5 == approvalsBeforeNewAddr5);
+    assert(newAddr1 != 0 => approvalsAfterNewAddr1 == approvalsBeforeNewAddr1 + weight || approvalsAfterNewAddr1 == approvalsBeforeNewAddr1, "error balance new addr 1");
+    assert(newAddr2 != 0 => approvalsAfterNewAddr2 == approvalsBeforeNewAddr2 + weight || approvalsAfterNewAddr2 == approvalsBeforeNewAddr2, "error balance new addr 2");
+    assert(newAddr3 != 0 => approvalsAfterNewAddr3 == approvalsBeforeNewAddr3 + weight || approvalsAfterNewAddr3 == approvalsBeforeNewAddr3, "error balance new addr 3");
+    assert(newAddr4 != 0 => approvalsAfterNewAddr4 == approvalsBeforeNewAddr4 + weight || approvalsAfterNewAddr4 == approvalsBeforeNewAddr4, "error balance new addr 4");
+    assert(newAddr5 != 0 => approvalsAfterNewAddr5 == approvalsBeforeNewAddr5 + weight || approvalsAfterNewAddr5 == approvalsBeforeNewAddr5, "error balance new addr 5");
 }
