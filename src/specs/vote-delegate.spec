@@ -217,6 +217,18 @@ rule free(uint256 wad) {
     uint256 senderIouBalanceBefore = iouInstance.balanceOf(e.msg.sender);
     uint256 chiefGovBalanceBefore = govInstance.balanceOf(chiefInstance);
 
+    bytes32 slate = chiefInstance.votes(currentContract);
+    address addr1 = chiefInstance.slates(slate, 0);
+    address addr2 = chiefInstance.slates(slate, 1);
+    address addr3 = chiefInstance.slates(slate, 2);
+    address addr4 = chiefInstance.slates(slate, 3);
+    address addr5 = chiefInstance.slates(slate, 4);
+    uint256 approvalsBeforeAddr1 = chiefInstance.approvals(addr1);
+    uint256 approvalsBeforeAddr2 = chiefInstance.approvals(addr2);
+    uint256 approvalsBeforeAddr3 = chiefInstance.approvals(addr3);
+    uint256 approvalsBeforeAddr4 = chiefInstance.approvals(addr4);
+    uint256 approvalsBeforeAddr5 = chiefInstance.approvals(addr5);
+
     free(e, wad);
 
     uint256 senderStakeAfter = stake(e.msg.sender);
@@ -225,11 +237,23 @@ rule free(uint256 wad) {
     uint256 senderIouBalanceAfter = iouInstance.balanceOf(e.msg.sender);
     uint256 chiefGovBalanceAfter = govInstance.balanceOf(chiefInstance);
 
+    uint256 approvalsAfterAddr1 = chiefInstance.approvals(addr1);
+    uint256 approvalsAfterAddr2 = chiefInstance.approvals(addr2);
+    uint256 approvalsAfterAddr3 = chiefInstance.approvals(addr3);
+    uint256 approvalsAfterAddr4 = chiefInstance.approvals(addr4);
+    uint256 approvalsAfterAddr5 = chiefInstance.approvals(addr5);
+
     assert(senderStakeAfter == senderStakeBefore - wad, "chief deposit error");
     assert(chiefDepositsAfter == chiefDepositsBefore - wad, "chief deposit error");
     assert(senderGovBalanceAfter == senderGovBalanceBefore + wad, "sender gov balance error");
     assert(senderIouBalanceAfter == senderIouBalanceBefore - wad, "iou balance error");
     assert(chiefGovBalanceAfter == chiefGovBalanceBefore - wad, "chief gov balance error");
+
+    assert(addr1 != 0 => approvalsAfterAddr1 == approvalsBeforeAddr1 - wad, "error balance new addr 1");
+    assert(addr2 != 0 => approvalsAfterAddr2 == approvalsBeforeAddr2 - wad, "error balance new addr 2");
+    assert(addr3 != 0 => approvalsAfterAddr3 == approvalsBeforeAddr3 - wad, "error balance new addr 3");
+    assert(addr4 != 0 => approvalsAfterAddr4 == approvalsBeforeAddr4 - wad, "error balance new addr 4");
+    assert(addr5 != 0 => approvalsAfterAddr5 == approvalsBeforeAddr5 - wad, "error balance new addr 5");
 }
 
 rule vote_slate(bytes32 newSlate) {
